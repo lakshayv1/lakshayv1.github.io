@@ -292,8 +292,8 @@
                 </div>
             </div>
             <div class="hidden md:flex gap-8 items-center">
-                <a id="home-link" class="text-[#00daf3] border-b-2 border-[#00daf3] pb-1 font-headline tracking-tight cursor-pointer"
-                    href="#main-section">Home</a>
+                <a class="text-[#00daf3] border-b-2 border-[#00daf3] pb-1 font-headline tracking-tight"
+                    href="index.html">Home</a>
                 <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors font-headline tracking-tight"
                     href="about.html">About</a>
                 <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors font-headline tracking-tight"
@@ -311,7 +311,7 @@
     </nav>
     <main>
         <!-- Hero Section -->
-        <section id="main-section" class="min-h-screen pt-32 pb-20 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center reveal-on-scroll">
+        <section class="min-h-screen pt-32 pb-20 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center reveal-on-scroll">
             <div class="w-full md:w-3/5">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full mb-6">
                     <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -451,17 +451,6 @@
             const heroContent = document.getElementById('hero-content');
             const nav = document.querySelector('nav');
 
-            // Force scroll to top on refresh to show Cinematic Hero
-            if (history.scrollRestoration) {
-                history.scrollRestoration = 'manual';
-            }
-            window.scrollTo(0, 0);
-
-            // Clean URL hash on load to prevent auto-jump
-            if (window.location.hash === '#main-section') {
-                history.replaceState(null, null, window.location.pathname);
-            }
-            
             // Set initial nav state
             if (nav) {
                 nav.style.opacity = '0';
@@ -606,18 +595,6 @@
             
             if (window.innerWidth > 768) {
                 animateCursor();
-            }
-
-            // Home Link Behavior: Scroll Skip Hero
-            const homeLink = document.getElementById('home-link');
-            const mainSection = document.getElementById('main-section');
-            if (homeLink && mainSection) {
-                homeLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    // Update URL without jumping
-                    history.pushState(null, null, '#main-section');
-                    mainSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
             }
 
             // Intersection Observer for Reveal Effects

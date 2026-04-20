@@ -107,9 +107,17 @@
         }
 
         @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Custom Cursor - Performance Optimized */
@@ -139,8 +147,16 @@
             will-change: transform;
         }
 
-        .cursor-hover #custom-cursor { transform: scale(2.5) !important; opacity: 0.2; }
-        .cursor-hover #cursor-follower { transform: scale(1.4) !important; background: rgba(0, 218, 243, 0.05); border-color: #00daf3; }
+        .cursor-hover #custom-cursor {
+            transform: scale(2.5) !important;
+            opacity: 0.2;
+        }
+
+        .cursor-hover #cursor-follower {
+            transform: scale(1.4) !important;
+            background: rgba(0, 218, 243, 0.05);
+            border-color: #00daf3;
+        }
 
         /* Scroll Progress */
         #scroll-progress {
@@ -169,21 +185,35 @@
         }
 
         @media (max-width: 768px) {
-            #custom-cursor, #cursor-follower, #mouse-glow { display: none !important; }
+
+            #custom-cursor,
+            #cursor-follower,
+            #mouse-glow {
+                display: none !important;
+            }
         }
 
         @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes apple-load-text {
-            from { 
+            from {
                 opacity: 0;
                 transform: translateY(20px);
             }
-            to { 
+
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -208,7 +238,7 @@
         .btn-hover-effect {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .btn-hover-effect:hover {
             transform: scale(1.05);
             box-shadow: 0 0 25px rgba(0, 218, 243, 0.3);
@@ -235,12 +265,13 @@
         class="fixed top-0 w-full z-50 bg-[#061423]/70 backdrop-blur-xl shadow-[0px_20px_40px_rgba(214,228,249,0.06)] no-line-rule">
         <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
             <div class="flex items-center gap-3">
-                <img src="profile.jpeg" alt="Lakshay Varshney" class="w-10 h-10 rounded-full object-cover border border-primary/30">
+                <img src="profile.jpeg" alt="Lakshay Varshney"
+                    class="w-10 h-10 rounded-full object-cover border border-primary/30">
                 <div class="text-2xl font-bold tracking-tighter text-[#00daf3] font-headline">Lakshay Varshney</div>
             </div>
             <div class="hidden md:flex items-center space-x-8 font-headline tracking-tight">
                 <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors hover:bg-[#1e2b3b]/50 hover:scale-[1.02] transition-all"
-                    href="index.html#main-section">Home</a>
+                    href="index.html">Home</a>
                 <a class="text-[#00daf3] border-b-2 border-[#00daf3] pb-1" href="about.html">About</a>
                 <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors hover:bg-[#1e2b3b]/50 hover:scale-[1.02] transition-all"
                     href="projects.html">Projects</a>
@@ -260,12 +291,13 @@
         <!-- Section 1: Professional Bio (Asymmetric Manifesto) -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
             <div class="lg:col-span-7">
-                <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1] animate-apple-load-text">
-                    Architecting <span
-                        class="text-transparent bg-clip-text neural-gradient">Neural
+                <h1
+                    class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1] animate-apple-load-text">
+                    Architecting <span class="text-transparent bg-clip-text neural-gradient">Neural
                         Intelligence</span>
                 </h1>
-                <div class="space-y-6 text-on-surface-variant text-lg leading-relaxed max-w-2xl animate-apple-load-text" style="animation-delay: 0.2s;">
+                <div class="space-y-6 text-on-surface-variant text-lg leading-relaxed max-w-2xl animate-apple-load-text"
+                    style="animation-delay: 0.2s;">
                     <p>
                         I am a technologist driven by the convergence of human logic and machine learning. My focus lies
                         in developing high-fidelity neural architectures that don't just process data, but interpret
@@ -523,7 +555,7 @@
                     const rect = btn.getBoundingClientRect();
                     const x = mouseX - (rect.left + rect.width / 2);
                     const y = mouseY - (rect.top + rect.height / 2);
-                    const distance = Math.sqrt(x*x + y*y);
+                    const distance = Math.sqrt(x * x + y * y);
 
                     if (distance < 80) {
                         btn.style.transform = `translate3d(${x * 0.25}px, ${y * 0.25}px, 0) scale(1.05)`;
@@ -534,7 +566,7 @@
 
                 requestAnimationFrame(animateCursor);
             }
-            
+
             if (window.innerWidth > 768) animateCursor();
 
             const revealOptions = {
