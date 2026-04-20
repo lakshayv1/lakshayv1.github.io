@@ -450,6 +450,12 @@
             const heroBg = document.getElementById('hero-bg');
             const heroContent = document.getElementById('hero-content');
             const nav = document.querySelector('nav');
+
+            // Force scroll to top on refresh to show Cinematic Hero
+            if (history.scrollRestoration) {
+                history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
             
             // Set initial nav state
             if (nav) {
@@ -603,7 +609,9 @@
             if (homeLink && mainSection) {
                 homeLink.addEventListener('click', (e) => {
                     e.preventDefault();
-                    mainSection.scrollIntoView({ behavior: 'smooth' });
+                    // Update URL without jumping
+                    history.pushState(null, null, '#main-section');
+                    mainSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             }
 
