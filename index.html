@@ -94,7 +94,7 @@
         .neural-gradient {
             background: linear-gradient(135deg, #00daf3 0%, #ff3b3b 50%, #00daf3 100%);
             background-size: 200% auto;
-            animation: gradient-shift 8s ease infinite;
+            animation: gradient-shift 15s ease infinite;
         }
 
         @keyframes gradient-shift {
@@ -292,8 +292,8 @@
                 </div>
             </div>
             <div class="hidden md:flex gap-8 items-center">
-                <a class="text-[#00daf3] border-b-2 border-[#00daf3] pb-1 font-headline tracking-tight"
-                    href="index.html">Home</a>
+                <a id="home-link" class="text-[#00daf3] border-b-2 border-[#00daf3] pb-1 font-headline tracking-tight cursor-pointer"
+                    href="#main-section">Home</a>
                 <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors font-headline tracking-tight"
                     href="about.html">About</a>
                 <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors font-headline tracking-tight"
@@ -311,7 +311,7 @@
     </nav>
     <main>
         <!-- Hero Section -->
-        <section class="min-h-screen pt-32 pb-20 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center reveal-on-scroll">
+        <section id="main-section" class="min-h-screen pt-32 pb-20 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center reveal-on-scroll">
             <div class="w-full md:w-3/5">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full mb-6">
                     <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -321,10 +321,10 @@
                     class="text-5xl md:text-7xl lg:text-[9rem] font-headline font-bold text-on-surface tracking-tighter leading-[0.85] mb-8 tilt-container shimmer-text">
                     Lakshay <span class="neural-gradient bg-clip-text text-transparent">Varshney</span>
                 </h1>
-                <p id="main-subtitle" class="text-base md:text-xl text-[#7DD3FC] font-headline font-medium mb-6 leading-tight uppercase tracking-[0.3em]" style="transition-delay: 0.1s;">
+                <p id="main-subtitle" class="text-base md:text-xl text-[#7DD3FC] font-headline font-medium mb-6 leading-tight uppercase tracking-[0.3em]">
                     Engineering the Future of Intelligence
                 </p>
-                <p id="main-desc" class="text-lg md:text-xl text-[#B0B0B0] max-w-xl mb-12 leading-relaxed" style="transition-delay: 0.2s;">
+                <p id="main-desc" class="text-lg md:text-xl text-[#B0B0B0] max-w-xl mb-12 leading-relaxed">
                     B.Tech CSE student specializing in AI/ML at <span class="text-on-surface font-semibold">Manav
                         Rachna University</span>. Passionate about coding, machine learning, and solving real-world challenges.
                 </p>
@@ -503,20 +503,13 @@
 
                 // Main Section Parallax
                 const mainTitle = document.getElementById('main-title');
-                const mainSubtitle = document.getElementById('main-subtitle');
-                const mainDesc = document.getElementById('main-desc');
                 const mainVisual = document.getElementById('main-visual');
-
                 if (scrollY > vh * 0.8) {
                     const relativeScroll = scrollY - (vh * 0.8);
                     if (mainTitle) mainTitle.style.transform = `translateY(${relativeScroll * 0.1}px) scale(${1 - relativeScroll * 0.0005})`;
-                    if (mainSubtitle) mainSubtitle.style.transform = `translateY(${relativeScroll * 0.08}px)`;
-                    if (mainDesc) mainDesc.style.transform = `translateY(${relativeScroll * 0.05}px)`;
-                    if (mainVisual) mainVisual.style.transform = `translateY(${relativeScroll * 0.15}px)`;
+                    if (mainVisual) mainVisual.style.transform = `translate3d(${relativeScroll * 0.15}px, 0, 0)`;
                 } else {
                     if (mainTitle) mainTitle.style.transform = '';
-                    if (mainSubtitle) mainSubtitle.style.transform = '';
-                    if (mainDesc) mainDesc.style.transform = '';
                     if (mainVisual) mainVisual.style.transform = '';
                 }
 
@@ -602,6 +595,16 @@
             
             if (window.innerWidth > 768) {
                 animateCursor();
+            }
+
+            // Home Link Behavior: Scroll Skip Hero
+            const homeLink = document.getElementById('home-link');
+            const mainSection = document.getElementById('main-section');
+            if (homeLink && mainSection) {
+                homeLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainSection.scrollIntoView({ behavior: 'smooth' });
+                });
             }
 
             // Intersection Observer for Reveal Effects
