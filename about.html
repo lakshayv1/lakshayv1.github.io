@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About &amp; Education | Neural Architect</title>
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#001b33",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#243141",
+                        "surface-container-lowest": "#020f1e",
+                        "background": "#061423",
+                        "on-tertiary-fixed-variant": "#2f4865",
+                        "surface-bright": "#2d3a4a",
+                        "inverse-primary": "#006875",
+                        "surface-container-high": "#1e2b3b",
+                        "secondary-fixed": "#d7e2ff",
+                        "on-background": "#d6e4f9",
+                        "on-tertiary": "#17324d",
+                        "on-error": "#690005",
+                        "surface-container-low": "#0f1c2c",
+                        "on-primary-fixed-variant": "#004f58",
+                        "outline": "#8e9196",
+                        "primary": "#00daf3",
+                        "inverse-surface": "#d6e4f9",
+                        "on-primary": "#00363d",
+                        "secondary-container": "#3e4960",
+                        "surface-tint": "#00daf3",
+                        "on-secondary": "#263046",
+                        "surface-variant": "#283646",
+                        "tertiary-fixed-dim": "#afc9ea",
+                        "tertiary-fixed": "#d1e4ff",
+                        "on-primary-container": "#0090a1",
+                        "on-primary-fixed": "#001f24",
+                        "tertiary": "#afc9ea",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3c475d",
+                        "primary-fixed": "#9cf0ff",
+                        "outline-variant": "#44474c",
+                        "surface-container-highest": "#283646",
+                        "on-surface": "#d6e4f9",
+                        "primary-fixed-dim": "#00daf3",
+                        "secondary-fixed-dim": "#bbc6e2",
+                        "secondary": "#bbc6e2",
+                        "on-secondary-container": "#adb8d3",
+                        "surface-container": "#132030",
+                        "on-surface-variant": "#c4c6cc",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#101b30",
+                        "on-tertiary-container": "#6b85a4",
+                        "primary-container": "#001e22",
+                        "on-tertiary-fixed": "#001d36",
+                        "surface-dim": "#061423",
+                        "surface": "#061423"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .no-line-rule {
+            border: none !important;
+        }
+
+        .tonal-shift-bg-only {
+            border: none !important;
+        }
+
+        .glass-effect {
+            background: rgba(15, 28, 44, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+    <!-- TopNavBar Navigation Shell -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-[#061423]/70 backdrop-blur-xl shadow-[0px_20px_40px_rgba(214,228,249,0.06)] no-line-rule">
+        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-3">
+                <img src="profile.jpeg" alt="Lakshay Varshney" class="w-10 h-10 rounded-full object-cover border border-primary/30">
+                <div class="text-2xl font-bold tracking-tighter text-[#00daf3] font-headline">Lakshay Varshney</div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 font-headline tracking-tight">
+                <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors hover:bg-[#1e2b3b]/50 hover:scale-[1.02] transition-all"
+                    href="index.html">Home</a>
+                <a class="text-[#00daf3] border-b-2 border-[#00daf3] pb-1" href="about.html">About</a>
+                <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors hover:bg-[#1e2b3b]/50 hover:scale-[1.02] transition-all"
+                    href="projects.html">Projects</a>
+                <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors hover:bg-[#1e2b3b]/50 hover:scale-[1.02] transition-all"
+                    href="contact.html">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="resume/index.html"
+                    class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary font-label font-bold rounded hover:scale-[1.02] active:translate-y-[-2px] transition-all">
+                    <span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+                    Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <!-- Section 1: Professional Bio (Asymmetric Manifesto) -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
+            <div class="lg:col-span-7">
+                <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1]">
+                    Architecting <span
+                        class="text-transparent bg-clip-text bg-gradient-to-br from-primary to-on-primary-container">Neural
+                        Intelligence</span>
+                </h1>
+                <div class="space-y-6 text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+                    <p>
+                        I am a technologist driven by the convergence of human logic and machine learning. My focus lies
+                        in developing high-fidelity neural architectures that don't just process data, but interpret
+                        complexity with precision.
+                    </p>
+                    <p>
+                        Currently exploring the frontiers of Deep Learning and Generative AI, I view every line of code
+                        as a structural component in a larger cognitive ecosystem. My mission is to bridge the gap
+                        between abstract mathematical models and impactful real-world applications.
+                    </p>
+                </div>
+            </div>
+            <div class="lg:col-span-5 relative">
+                <div
+                    class="aspect-square rounded-xl overflow-hidden bg-surface-container-low shadow-[0px_20px_40px_rgba(214,228,249,0.06)] relative group">
+                    <img alt="AI visualization"
+                        class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+                        data-alt="Abstract blue neural network visualization with glowing nodes and digital data streams in a dark technical environment"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuClp9Um-dXJ4EloVdjXF_6ErPPBdI-O064NRzQWPo2Uq-ZGsE5VrVYI2RujHYQDxmWU7TsM6OTfEGwcprzKCYeP__WZ097Il-51v6sTaRmctDOF_-r64SSEP6QGBTdxEm-WWrLPhfCNuASAAPTWhORMSVgneoIl504MAj_nMv3mqOHat1Y-TNjtUanqwIlmCewNDS7DzRu_A_fppZU5a3RADh-ua9nsoGiV66v-lzNu57pa15uqUm67YLk-W95CkGqdJRvgOls2Ai87" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+                    <div
+                        class="absolute bottom-6 left-6 right-6 p-6 glass-effect rounded-lg border border-outline-variant/15">
+                        <p class="font-label text-xs uppercase tracking-widest text-primary mb-2">Research Focus</p>
+                        <p class="font-headline text-xl font-bold">Neural Pattern Recognition &amp; Scalable ML
+                            Pipelines</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section 2: Education Timeline (Neural Layering) -->
+        <section class="mb-32">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="font-headline text-4xl font-bold tracking-tight mb-4">Academic Progression</h2>
+                    <p class="text-on-surface-variant max-w-md">Formal education mapping from foundational engineering
+                        to specialized artificial intelligence research.</p>
+                </div>
+                <div
+                    class="font-label text-sm text-primary flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-highest">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    System Status: Active Learning
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- University Entry -->
+                <div
+                    class="group relative bg-surface-container-low hover:bg-surface-container-high transition-all p-8 rounded-lg border border-outline-variant/15 flex flex-col md:flex-row gap-8 items-start md:items-center">
+                    <div
+                        class="flex-shrink-0 w-24 h-24 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/10">
+                        <span class="material-symbols-outlined text-4xl text-primary" data-icon="school">school</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-headline text-2xl font-bold text-on-surface">B.Tech in Computer Science
+                                &amp; Engineering</h3>
+                            <span
+                                class="font-label text-primary bg-primary-container px-3 py-1 rounded text-sm font-bold">2025
+                                — 2029</span>
+                        </div>
+                        <p class="font-body text-xl text-on-surface-variant mb-4">Manav Rachna University</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-label rounded-full flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Artificial Intelligence
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-label rounded-full flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Data Structures
+                            </span>
+                            <span
+                                class="px-3 py-1 bg-surface-container-highest text-on-surface-variant text-xs font-label rounded-full flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Cloud Computing
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Secondary Education -->
+                <div
+                    class="group relative bg-surface-container-low/50 hover:bg-surface-container-high transition-all p-8 rounded-lg border border-outline-variant/15 flex flex-col md:flex-row gap-8 items-start md:items-center opacity-80 hover:opacity-100">
+                    <div
+                        class="flex-shrink-0 w-24 h-24 rounded-lg bg-surface-container-highest/50 flex items-center justify-center border border-outline-variant/10">
+                        <span class="material-symbols-outlined text-4xl text-secondary"
+                            data-icon="history_edu">history_edu</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex flex-wrap justify-between items-start mb-2">
+                            <h3 class="font-headline text-2xl font-bold text-on-surface/80">Senior Secondary Education
+                            </h3>
+                            <span
+                                class="font-label text-secondary bg-surface-container-highest px-3 py-1 rounded text-sm font-bold">2023
+                                — 2025</span>
+                        </div>
+                        <p class="font-body text-xl text-on-surface-variant mb-4">Kalka Public School</p>
+                        <p class="text-sm text-on-surface-variant max-w-xl">Science &amp; Mathematics Stream • Focused
+                            on Physics, Chemistry, and Advanced Mathematics as core pillars for computational thinking
+                            and algorithmic foundations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section 3: Core Skills (Bento Grid / Neural Slate) -->
+        <section>
+            <h2 class="font-headline text-4xl font-bold tracking-tight mb-12">Neural Stack &amp; Competencies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <!-- Skill Group 1: AI/ML -->
+                <div
+                    class="md:col-span-2 lg:col-span-3 bg-surface-container-low p-8 rounded-lg border border-outline-variant/15 flex flex-col justify-between group hover:bg-surface-container-high transition-all">
+                    <div>
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 border border-primary/20">
+                            <span class="material-symbols-outlined text-primary"
+                                data-icon="psychology">psychology</span>
+                        </div>
+                        <h4 class="font-headline text-2xl font-bold mb-4">Machine Learning</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> TensorFlow
+                            </span>
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> PyTorch
+                            </span>
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> Scikit-Learn
+                            </span>
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> NLP
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-outline-variant/10 text-sm text-on-surface-variant">
+                        Advanced implementation of neural networks and predictive modeling.
+                    </div>
+                </div>
+                <!-- Skill Group 2: Languages -->
+                <div
+                    class="md:col-span-2 lg:col-span-3 bg-surface-container-low p-8 rounded-lg border border-outline-variant/15 flex flex-col justify-between group hover:bg-surface-container-high transition-all">
+                    <div>
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 border border-primary/20">
+                            <span class="material-symbols-outlined text-primary" data-icon="code">code</span>
+                        </div>
+                        <h4 class="font-headline text-2xl font-bold mb-4">Core Languages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> Python
+                            </span>
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> C++
+                            </span>
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> SQL
+                            </span>
+                            <span
+                                class="px-3 py-1.5 bg-surface-container-highest rounded-full font-label text-xs font-semibold text-on-surface flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> TypeScript
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-outline-variant/10 text-sm text-on-surface-variant">
+                        Strong foundation in procedural and object-oriented programming paradigms.
+                    </div>
+                </div>
+                <!-- Skill Group 3: Tools -->
+                <div
+                    class="md:col-span-2 bg-surface-container-low p-6 rounded-lg border border-outline-variant/15 flex flex-col items-center justify-center text-center group hover:bg-surface-container-high transition-all">
+                    <span class="material-symbols-outlined text-3xl text-secondary mb-4"
+                        data-icon="architecture">architecture</span>
+                    <h4 class="font-headline font-bold mb-2">DevOps &amp; Tools</h4>
+                    <p class="text-xs text-on-surface-variant font-label">Git • Docker • AWS • Linux</p>
+                </div>
+                <!-- Skill Group 4: Analytics -->
+                <div
+                    class="md:col-span-2 bg-surface-container-low p-6 rounded-lg border border-outline-variant/15 flex flex-col items-center justify-center text-center group hover:bg-surface-container-high transition-all">
+                    <span class="material-symbols-outlined text-3xl text-secondary mb-4"
+                        data-icon="monitoring">monitoring</span>
+                    <h4 class="font-headline font-bold mb-2">Data Engineering</h4>
+                    <p class="text-xs text-on-surface-variant font-label">Spark • Pandas • Tableau • Kafka</p>
+                </div>
+                <!-- Skill Group 5: Research -->
+                <div
+                    class="md:col-span-2 bg-surface-container-low p-6 rounded-lg border border-outline-variant/15 flex flex-col items-center justify-center text-center group hover:bg-surface-container-high transition-all">
+                    <span class="material-symbols-outlined text-3xl text-secondary mb-4"
+                        data-icon="science">science</span>
+                    <h4 class="font-headline font-bold mb-2">Theoretical R&amp;D</h4>
+                    <p class="text-xs text-on-surface-variant font-label">Linear Algebra • Statistics • Calculus</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer Navigation Shell -->
+    <footer class="w-full border-t border-[#44474c]/15 bg-[#020f1e] tonal-shift-bg-only">
+        <div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full max-w-7xl mx-auto">
+            <div class="font-['Space_Grotesk'] font-bold text-[#00daf3] mb-4 md:mb-0">Lakshay Varshney</div>
+            <div class="flex gap-8 mb-6 md:mb-0">
+                <a class="font-['Inter'] text-sm text-[#afc9ea] hover:text-[#00daf3] transition-colors active:opacity-80"
+                    href="#">GitHub</a>
+                <a class="font-['Inter'] text-sm text-[#afc9ea] hover:text-[#00daf3] transition-colors active:opacity-80"
+                    href="https://www.linkedin.com/in/lakshay-varshney-2819ba23a" target="_blank">LinkedIn</a>
+                <a class="font-['Inter'] text-sm text-[#afc9ea] hover:text-[#00daf3] transition-colors active:opacity-80"
+                    href="#">Twitter</a>
+                <a class="font-['Inter'] text-sm text-[#afc9ea] hover:text-[#00daf3] transition-colors active:opacity-80"
+                    href="#">Email</a>
+            </div>
+            <div class="font-['Inter'] text-sm text-[#bbc6e2]">
+                © 2026 Neural Architect | Lakshay Varshney
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#00113a",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8",
+                        "on-surface": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body">
+    <nav
+        class="fixed top-0 w-full z-50 bg-[#fcf9f8]/80 backdrop-blur-md shadow-sm flex items-center justify-between px-10 py-5">
+        <div class="text-2xl font-black tracking-tighter text-[#00113a] uppercase">ATELIER</div>
+        <div class="hidden md:flex items-center space-x-12">
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="homepage.html">Home</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#00113a] border-b-2 border-[#00113a] pb-1 transition-all"
+                href="PRODUCT_CATALOGUE.HTML">Catalogue</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="PRODUCT.HTML">Product</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="CRM.HTML">CRM</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="CARD&amp;CHECKOUT.HTML">Checkout</a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <button class="material-symbols-outlined">search</button>
+            <button class="material-symbols-outlined">person</button>
+            <button class="material-symbols-outlined">shopping_bag</button>
+        </div>
+    </nav>
+
+    <main class="pt-32 container mx-auto px-10">
+        <h1 class="text-6xl font-black tracking-tighter text-primary mb-8">PRODUCT CATALOGUE</h1>
+        <p class="text-lg text-gray-600 mb-12">Explore our curated selection of architectural pieces.</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Product Placeholder -->
+            <div class="group cursor-pointer">
+                <div class="aspect-[3/4] bg-gray-100 mb-4 overflow-hidden">
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 uppercase tracking-widest text-xs">Image Placeholder</div>
+                </div>
+                <h4 class="text-sm font-bold uppercase text-primary">Minimalist Sculpture</h4>
+                <p class="text-xs text-gray-500">$240</p>
+            </div>
+            <!-- More products can be added here -->
+             <div class="group cursor-pointer">
+                <div class="aspect-[3/4] bg-gray-100 mb-4 overflow-hidden">
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 uppercase tracking-widest text-xs">Image Placeholder</div>
+                </div>
+                <h4 class="text-sm font-bold uppercase text-primary">Linen Tunic</h4>
+                <p class="text-xs text-gray-500">$180</p>
+            </div>
+             <div class="group cursor-pointer">
+                <div class="aspect-[3/4] bg-gray-100 mb-4 overflow-hidden">
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 uppercase tracking-widest text-xs">Image Placeholder</div>
+                </div>
+                <h4 class="text-sm font-bold uppercase text-primary">Raw Edge Denime</h4>
+                <p class="text-xs text-gray-500">$320</p>
+            </div>
+             <div class="group cursor-pointer">
+                <div class="aspect-[3/4] bg-gray-100 mb-4 overflow-hidden">
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 uppercase tracking-widest text-xs">Image Placeholder</div>
+                </div>
+                <h4 class="text-sm font-bold uppercase text-primary">Leather Mule</h4>
+                <p class="text-xs text-gray-500">$210</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

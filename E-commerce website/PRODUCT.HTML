@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#00113a",
+                        "background": "#fcf9f8",
+                        "surface": "#fcf9f8",
+                        "on-surface": "#1c1b1b",
+                        "on-primary": "#ffffff",
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body">
+    <nav
+        class="fixed top-0 w-full z-50 bg-[#fcf9f8]/80 backdrop-blur-md shadow-sm flex items-center justify-between px-10 py-5">
+        <div class="text-2xl font-black tracking-tighter text-[#00113a] uppercase">ATELIER</div>
+        <div class="hidden md:flex items-center space-x-12">
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="homepage.html">Home</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="PRODUCT_CATALOGUE.HTML">Catalogue</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#00113a] border-b-2 border-[#00113a] pb-1 transition-all"
+                href="PRODUCT.HTML">Product</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="CRM.HTML">CRM</a>
+            <a class="font-inter tracking-tight text-sm uppercase font-medium text-[#1c1b1b]/60 hover:text-[#00113a] transition-all"
+                href="CARD&amp;CHECKOUT.HTML">Checkout</a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <button class="material-symbols-outlined">search</button>
+            <button class="material-symbols-outlined">person</button>
+            <button class="material-symbols-outlined">shopping_bag</button>
+        </div>
+    </nav>
+
+    <main class="pt-32 container mx-auto px-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div class="aspect-[3/4] bg-gray-100 flex items-center justify-center text-gray-400 uppercase tracking-widest text-sm">
+                Product Image Placeholder
+            </div>
+            <div>
+                <span class="text-xs uppercase tracking-widest text-gray-500 mb-2 block">New Arrival</span>
+                <h1 class="text-5xl font-black tracking-tighter text-primary mb-6 uppercase">SCULPTURAL COLUMN DRESS</h1>
+                <p class="text-2xl font-light text-primary mb-8">$420</p>
+                <p class="text-on-surface-variant leading-relaxed mb-10 text-lg">
+                    A masterclass in form and material. This piece features a signature silhouette developed in our Paris atelier, using sustainably sourced heavy-weight linen.
+                </p>
+                <button class="w-full bg-primary text-white py-5 uppercase font-bold tracking-widest hover:bg-opacity-90 transition-all">
+                    Add to Bag
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

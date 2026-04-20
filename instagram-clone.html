@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+        }
+
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #dbdbdb;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 975px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 28px;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 935px;
+            margin: 80px auto 0;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 30px;
+        }
+
+        .feed {
+            width: 100%;
+        }
+
+        .stories {
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+        }
+
+        .story {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .story-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid #e91e63;
+            padding: 2px;
+            background: white;
+        }
+
+        .story-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .story-username {
+            font-size: 12px;
+            max-width: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .post {
+            background-color: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 14px 16px;
+            justify-content: space-between;
+        }
+
+        .post-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .post-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .post-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .post-image {
+            width: 100%;
+            display: block;
+        }
+
+        .post-actions {
+            padding: 12px 16px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .post-likes {
+            padding: 0 16px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .post-caption {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .post-caption .username {
+            font-weight: 600;
+            margin-right: 8px;
+        }
+
+        .post-comments {
+            padding: 0 16px 8px;
+            font-size: 14px;
+            color: #8e8e8e;
+            cursor: pointer;
+        }
+
+        .post-time {
+            padding: 0 16px 12px;
+            font-size: 10px;
+            color: #8e8e8e;
+            text-transform: uppercase;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .profile-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .profile-name {
+            font-size: 14px;
+            color: #8e8e8e;
+        }
+
+        .suggestions {
+            margin-top: 24px;
+        }
+
+        .suggestions-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .suggestions-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: #8e8e8e;
+        }
+
+        .suggestion {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .suggestion-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .suggestion-info {
+            flex: 1;
+        }
+
+        .suggestion-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .suggestion-subtitle {
+            font-size: 12px;
+            color: #8e8e8e;
+        }
+
+        .follow-btn {
+            background: none;
+            border: none;
+            color: #0095f6;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 11px;
+            color: #c7c7c7;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Instagram</div>
+            <div class="nav-icons">
+                <span class="icon">🏠</span>
+                <span class="icon">💬</span>
+                <span class="icon">➕</span>
+                <span class="icon">🧭</span>
+                <span class="icon">❤️</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="feed">
+            <div class="stories">
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Story">
+                    </div>
+                    <span class="story-username">user_one</span>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://i.pravatar.cc/150?img=2" alt="Story">
+                    </div>
+                    <span class="story-username">user_two</span>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://i.pravatar.cc/150?img=3" alt="Story">
+                    </div>
+                    <span class="story-username">user_three</span>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://i.pravatar.cc/150?img=4" alt="Story">
+                    </div>
+                    <span class="story-username">user_four</span>
+                </div>
+                <div class="story">
+                    <div class="story-avatar">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Story">
+                    </div>
+                    <span class="story-username">user_five</span>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <img src="https://i.pravatar.cc/150?img=10" alt="User" class="post-avatar">
+                        <span class="post-username">travel_lover</span>
+                    </div>
+                    <span class="icon">⋯</span>
+                </div>
+                <img src="https://picsum.photos/600/600?random=1" alt="Post" class="post-image">
+                <div class="post-actions">
+                    <button class="action-btn">❤️</button>
+                    <button class="action-btn">💬</button>
+                    <button class="action-btn">📤</button>
+                </div>
+                <div class="post-likes">1,234 likes</div>
+                <div class="post-caption">
+                    <span class="username">travel_lover</span>
+                    Amazing sunset at the beach! 🌅
+                </div>
+                <div class="post-comments">View all 42 comments</div>
+                <div class="post-time">2 hours ago</div>
+            </div>
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="User" class="post-avatar">
+                        <span class="post-username">foodie_life</span>
+                    </div>
+                    <span class="icon">⋯</span>
+                </div>
+                <img src="https://picsum.photos/600/600?random=2" alt="Post" class="post-image">
+                <div class="post-actions">
+                    <button class="action-btn">❤️</button>
+                    <button class="action-btn">💬</button>
+                    <button class="action-btn">📤</button>
+                </div>
+                <div class="post-likes">2,567 likes</div>
+                <div class="post-caption">
+                    <span class="username">foodie_life</span>
+                    Best pasta in town! 🍝
+                </div>
+                <div class="post-comments">View all 89 comments</div>
+                <div class="post-time">5 hours ago</div>
+            </div>
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="User" class="post-avatar">
+                        <span class="post-username">nature_shots</span>
+                    </div>
+                    <span class="icon">⋯</span>
+                </div>
+                <img src="https://picsum.photos/600/600?random=3" alt="Post" class="post-image">
+                <div class="post-actions">
+                    <button class="action-btn">❤️</button>
+                    <button class="action-btn">💬</button>
+                    <button class="action-btn">📤</button>
+                </div>
+                <div class="post-likes">3,891 likes</div>
+                <div class="post-caption">
+                    <span class="username">nature_shots</span>
+                    Mountain views never get old 🏔️
+                </div>
+                <div class="post-comments">View all 156 comments</div>
+                <div class="post-time">1 day ago</div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="profile-card">
+                <img src="https://i.pravatar.cc/150?img=20" alt="Profile" class="profile-avatar">
+                <div class="profile-info">
+                    <div class="profile-username">your_username</div>
+                    <div class="profile-name">Your Name</div>
+                </div>
+            </div>
+
+            <div class="suggestions">
+                <div class="suggestions-header">
+                    <span class="suggestions-title">Suggestions For You</span>
+                    <button class="follow-btn">See All</button>
+                </div>
+
+                <div class="suggestion">
+                    <img src="https://i.pravatar.cc/150?img=21" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <div class="suggestion-username">photo_artist</div>
+                        <div class="suggestion-subtitle">Followed by user_one</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="suggestion">
+                    <img src="https://i.pravatar.cc/150?img=22" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <div class="suggestion-username">fitness_guru</div>
+                        <div class="suggestion-subtitle">Followed by user_two</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="suggestion">
+                    <img src="https://i.pravatar.cc/150?img=23" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <div class="suggestion-username">tech_reviews</div>
+                        <div class="suggestion-subtitle">Followed by user_three</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="suggestion">
+                    <img src="https://i.pravatar.cc/150?img=24" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <div class="suggestion-username">music_vibes</div>
+                        <div class="suggestion-subtitle">Followed by user_four</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="suggestion">
+                    <img src="https://i.pravatar.cc/150?img=25" alt="User" class="suggestion-avatar">
+                    <div class="suggestion-info">
+                        <div class="suggestion-username">art_gallery</div>
+                        <div class="suggestion-subtitle">Followed by user_five</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+
+            <div class="footer">
+                © 2024 Instagram Clone
+            </div>
+        </div>
+    </div>
+</body>
+</html>

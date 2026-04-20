@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Decorators -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <div id="app">
+        <!-- Error/Success Notification -->
+        <div id="notification-area" class="hidden"></div>
+
+        <!-- Landing View -->
+        <section id="landing-view" class="view active">
+            <div class="landing-container glass-panel">
+                <div class="logo-icon">📚</div>
+                <h1>Library System</h1>
+                <p>A modern platform for managing and reading books</p>
+                <div class="role-selector">
+                    <button class="btn btn-primary btn-lg" onclick="app.showAdminLogin()">Login as Admin</button>
+                    <button class="btn btn-secondary btn-lg" onclick="app.showUserLogin()">Login as User</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Login View -->
+        <section id="admin-login-view" class="view">
+            <div class="auth-container glass-panel">
+                <button class="btn-back" onclick="app.showLanding()">&#8592; Back</button>
+                <h2>Admin Access</h2>
+                <form id="admin-login-form" onsubmit="app.handleAdminLogin(event)">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="admin-username" required placeholder="admin" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="admin-password" required placeholder="admin123" />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Login to Dashboard</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- User Login/Signup View -->
+        <section id="user-auth-view" class="view">
+            <div class="auth-container glass-panel">
+                <button class="btn-back" onclick="app.showLanding()">&#8592; Back</button>
+                
+                <div class="auth-tabs">
+                    <button class="tab-btn active" id="tab-login" type="button" onclick="app.switchUserAuthTab('login')">Login</button>
+                    <button class="tab-btn" id="tab-signup" type="button" onclick="app.switchUserAuthTab('signup')">Sign Up</button>
+                </div>
+
+                <!-- User Login Form -->
+                <form id="user-login-form" onsubmit="app.handleUserLogin(event)">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="login-username" required placeholder="Enter your username" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-password" required placeholder="Enter your password" />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+                </form>
+
+                <!-- User Signup Form -->
+                <form id="user-signup-form" class="hidden" onsubmit="app.handleUserSignup(event)">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="signup-username" required placeholder="Choose a username" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="signup-password" minlength="4" required placeholder="Create a password (min 4 chars)" />
+                    </div>
+                    <button type="submit" class="btn btn-secondary w-100 mt-2">Create Account</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard View -->
+        <section id="admin-dashboard-view" class="view">
+            <nav class="navbar glass-panel">
+                <div class="brand">
+                    <span class="icon">📚</span> Admin Dashboard
+                </div>
+                <button class="btn btn-outline btn-sm" onclick="app.handleLogout()">Logout</button>
+            </nav>
+            <div class="dashboard-content">
+                <div class="stats-container">
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);">📖</div>
+                        <div class="stat-info">
+                            <h3>Total Books</h3>
+                            <p id="stat-total-books">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #F59E0B;">📤</div>
+                        <div class="stat-info">
+                            <h3>Borrowed</h3>
+                            <p id="stat-borrowed-books">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-panel">
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--secondary);">📥</div>
+                        <div class="stat-info">
+                            <h3>Available</h3>
+                            <p id="stat-available-books">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-sections">
+                    <div class="section-card glass-panel">
+                        <div class="section-header">
+                            <h2>Manage Books</h2>
+                            <div class="search-bar">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" id="admin-search-books" placeholder="Search title or author..." onkeyup="app.renderAdminBooks()" />
+                            </div>
+                        </div>
+                        
+                        <form id="add-book-form" onsubmit="app.handleAddBook(event)" class="inline-form">
+                            <input type="text" id="book-title" placeholder="Book Title" required />
+                            <input type="text" id="book-author" placeholder="Author Name" required />
+                            <select id="book-category" required>
+                                <option value="" disabled selected>Category</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="Non-Fiction">Non-Fiction</option>
+                                <option value="Science">Science</option>
+                                <option value="History">History</option>
+                                <option value="Biography">Biography</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Add New Book</button>
+                        </form>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th style="text-align: right;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-books-list">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="section-card glass-panel mt-4">
+                        <h2>Active Loans</h2>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Book Details</th>
+                                        <th>Borrower</th>
+                                        <th>Issue Date</th>
+                                        <th>Due Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-borrowed-list">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Dashboard View -->
+        <section id="user-dashboard-view" class="view">
+            <nav class="navbar glass-panel">
+                <div class="brand">
+                    <span class="icon">👋</span> Welcome, <span id="user-display-name"></span>
+                </div>
+                <button class="btn btn-outline btn-sm" onclick="app.handleLogout()">Logout</button>
+            </nav>
+            <div class="dashboard-content">
+
+                <!-- Alert Banner for Deadlines -->
+                <div id="user-deadline-alert" class="alert-banner hidden">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div class="user-sections">
+                    <div class="section-card glass-panel">
+                        <div class="section-header">
+                            <h2>My Borrowed Books</h2>
+                            <span class="badge badge-primary"><span id="user-borrow-count">0</span> / 3 Allowed</span>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Book Info</th>
+                                        <th>Due Date</th>
+                                        <th>Status</th>
+                                        <th style="text-align: right;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="user-borrowed-list">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="section-card glass-panel mt-4">
+                        <div class="section-header">
+                            <h2>Library Catalog</h2>
+                            <div class="search-bar">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" id="user-search-books" placeholder="Search available books..." onkeyup="app.renderUserAvailableBooks()" />
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Category</th>
+                                        <th style="text-align: right;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="user-available-list">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Edit Book Modal -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <h3>Edit Book Details</h3>
+            <form id="edit-book-form" onsubmit="app.handleUpdateBook(event)">
+                <input type="hidden" id="edit-book-id" />
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="edit-book-title" required />
+                </div>
+                <div class="form-group">
+                    <label>Author</label>
+                    <input type="text" id="edit-book-author" required />
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="edit-book-category" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                        <option value="Science">Science</option>
+                        <option value="History">History</option>
+                        <option value="Biography">Biography</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="app.closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

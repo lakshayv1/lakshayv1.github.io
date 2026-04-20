@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#001b33",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#243141",
+                        "surface-container-lowest": "#020f1e",
+                        "background": "#061423",
+                        "on-tertiary-fixed-variant": "#2f4865",
+                        "surface-bright": "#2d3a4a",
+                        "inverse-primary": "#006875",
+                        "surface-container-high": "#1e2b3b",
+                        "secondary-fixed": "#d7e2ff",
+                        "on-background": "#d6e4f9",
+                        "on-tertiary": "#17324d",
+                        "on-error": "#690005",
+                        "surface-container-low": "#0f1c2c",
+                        "on-primary-fixed-variant": "#004f58",
+                        "outline": "#8e9196",
+                        "primary": "#00daf3",
+                        "inverse-surface": "#d6e4f9",
+                        "on-primary": "#00363d",
+                        "secondary-container": "#3e4960",
+                        "surface-tint": "#00daf3",
+                        "on-secondary": "#263046",
+                        "surface-variant": "#283646",
+                        "tertiary-fixed-dim": "#afc9ea",
+                        "tertiary-fixed": "#d1e4ff",
+                        "on-primary-container": "#0090a1",
+                        "on-primary-fixed": "#001f24",
+                        "tertiary": "#afc9ea",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3c475d",
+                        "primary-fixed": "#9cf0ff",
+                        "outline-variant": "#44474c",
+                        "surface-container-highest": "#283646",
+                        "on-surface": "#d6e4f9",
+                        "primary-fixed-dim": "#00daf3",
+                        "secondary-fixed-dim": "#bbc6e2",
+                        "secondary": "#bbc6e2",
+                        "on-secondary-container": "#adb8d3",
+                        "surface-container": "#132030",
+                        "on-surface-variant": "#c4c6cc",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#101b30",
+                        "on-tertiary-container": "#6b85a4",
+                        "primary-container": "#001e22",
+                        "on-tertiary-fixed": "#001d36",
+                        "surface-dim": "#061423",
+                        "surface": "#061423"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .no-line-rule {
+            border: none !important;
+        }
+
+        .glass-header {
+            backdrop-filter: blur(20px);
+        }
+
+        .neural-gradient-text {
+            background: linear-gradient(135deg, #00daf3 0%, #0090a1 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+    <nav class="fixed top-0 w-full z-50 bg-[#061423]/70 backdrop-blur-xl no-line-rule">
+        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-3">
+                <img src="profile.jpeg" alt="Lakshay Varshney" class="w-10 h-10 rounded-full object-cover border border-primary/30">
+                <div class="text-2xl font-bold tracking-tighter text-[#00daf3] font-headline">Lakshay Varshney</div>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 font-headline tracking-tight">
+                <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors" href="index.html">Home</a>
+                <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors" href="about.html">About</a>
+                <a class="text-[#00daf3] border-b-2 border-[#00daf3] pb-1" href="projects.html">Projects</a>
+                <a class="text-[#bbc6e2] hover:text-[#00daf3] transition-colors" href="contact.html">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span
+                    class="material-symbols-outlined text-[#00daf3] cursor-pointer hover:scale-110 transition-transform"
+                    data-icon="terminal">terminal</span>
+                <a href="resume/index.html"
+                    class="bg-primary text-on-primary px-5 py-2 font-headline font-bold text-sm tracking-tight hover:scale-[1.02] active:translate-y-[-2px] transition-all rounded-lg">
+                    Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+        <header class="mb-20">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div class="max-w-2xl">
+                    <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-6 neural-gradient-text">
+                        Digital Architectures.</h1>
+                    <p class="text-secondary text-lg md:text-xl leading-relaxed">
+                        A curated collection of full-stack applications, interactive games, and robust management systems built with precision and modern technologies.
+                    </p>
+                </div>
+
+            </div>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="group bg-surface-container-low rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-high hover:scale-[1.02] shadow-[0px_20px_40px_rgba(214,228,249,0.06)]">
+                <a href="car-racing.html" class="block">
+                    <div class="h-48 overflow-hidden">
+                        <img alt="Car Racing Preview"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0 opacity-60 group-hover:opacity-100"
+                            src="images/car-racing.png" />
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                data-icon="sports_esports">sports_esports</span>
+                            <span class="font-label text-xs text-on-tertiary-container uppercase tracking-widest">Game Development</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold text-on-surface mb-3 tracking-tight">Nitro Racer</h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6">High-speed arcade experience built with vanilla JavaScript and HTML5 Canvas API.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> JavaScript
+                            </span>
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> Canvas API
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div
+                class="group bg-surface-container-low rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-high hover:scale-[1.02] shadow-[0px_20px_40px_rgba(214,228,249,0.06)]">
+                <a href="instagram-clone.html" class="block">
+                    <div class="h-48 overflow-hidden">
+                        <img alt="Instagram Clone Preview"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0 opacity-60 group-hover:opacity-100"
+                            src="images/instagram-clone.png" />
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                data-icon="photo_camera">photo_camera</span>
+                            <span class="font-label text-xs text-on-tertiary-container uppercase tracking-widest">Social Media</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold text-on-surface mb-3 tracking-tight">InstaStack Clone</h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6">A feature-rich social media interface with responsive design and interactive UI components.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> HTML/CSS
+                            </span>
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> Mobile-First
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div
+                class="group bg-surface-container-low rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-high hover:scale-[1.02] shadow-[0px_20px_40px_rgba(214,228,249,0.06)]">
+                <a href="LMS/index.html" class="block">
+                    <div class="h-48 overflow-hidden">
+                        <img alt="LMS Preview"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0 opacity-60 group-hover:opacity-100"
+                            src="images/lms.png" />
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                data-icon="library_books">library_books</span>
+                            <span class="font-label text-xs text-on-tertiary-container uppercase tracking-widest">Management System</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold text-on-surface mb-3 tracking-tight">LMS Core</h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6">Full-scale administrative dashboard for book tracking, member management, and automated workflows.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> Dashboard
+                            </span>
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> CRUD
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div
+                class="group bg-surface-container-low rounded-xl overflow-hidden transition-all duration-300 hover:bg-surface-container-high hover:scale-[1.02] shadow-[0px_20px_40px_rgba(214,228,249,0.06)]">
+                <a href="E-commerce website/homepage.html" class="block">
+                    <div class="h-48 overflow-hidden">
+                        <img alt="E-commerce Preview"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0 opacity-60 group-hover:opacity-100"
+                            src="images/ecommerce.png" />
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                data-icon="shopping_cart">shopping_cart</span>
+                            <span class="font-label text-xs text-on-tertiary-container uppercase tracking-widest">E-Commerce</span>
+                        </div>
+                        <h3 class="font-headline text-2xl font-bold text-on-surface mb-3 tracking-tight">Quantum Commerce</h3>
+                        <p class="text-secondary text-sm leading-relaxed mb-6">Modern digital marketplace with a sleek catalogue, product views, and a streamlined checkout flow.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> Responsive
+                            </span>
+                            <span class="bg-surface-container-highest px-3 py-1 rounded-full font-label text-[10px] text-on-surface-variant flex items-center gap-1">
+                                <span class="w-1 h-1 rounded-full bg-primary"></span> Multi-Page
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-[#020f1e] w-full border-t border-[#44474c]/15">
+        <div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full max-w-7xl mx-auto">
+            <div class="mb-6 md:mb-0">
+                <span class="font-['Space_Grotesk'] font-bold text-[#00daf3] text-xl">Lakshay Varshney</span>
+                <p class="font-['Inter'] text-sm text-[#bbc6e2] mt-2 opacity-60">Architecting intelligent digital futures.</p>
+            </div>
+            <div class="flex gap-8 mb-6 md:mb-0">
+                <a class="text-[#afc9ea] hover:text-[#00daf3] transition-colors font-['Inter'] text-sm"
+                    href="https://github.com/lakshayv1" target="_blank">GitHub</a>
+                <a class="text-[#afc9ea] hover:text-[#00daf3] transition-colors font-['Inter'] text-sm"
+                    href="https://www.linkedin.com/in/lakshay-varshney-2819ba23a" target="_blank">LinkedIn</a>
+                <a class="text-[#afc9ea] hover:text-[#00daf3] transition-colors font-['Inter'] text-sm"
+                    href="mailto:lakshayvarshney2022@gmail.com">Email</a>
+            </div>
+            <div class="font-['Inter'] text-sm text-[#bbc6e2] opacity-60">
+                © 2026 Personal Portfolio | Delhi, India
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
