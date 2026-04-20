@@ -81,7 +81,7 @@
                     "fontFamily": {
                         "headline": ["Space Grotesk"],
                         "body": ["Inter"],
-                        "label": ["Manrope"]
+                        "label": ["Inter"]
                     }
                 },
             },
@@ -96,8 +96,120 @@
             border: none !important;
         }
 
-        .tonal-shift-bg-only {
-            border: none !important;
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .neural-gradient {
+            background: linear-gradient(135deg, #00daf3 0%, #ff3b3b 50%, #00daf3 100%);
+            background-size: 200% auto;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        /* Custom Cursor - Performance Optimized */
+        #custom-cursor {
+            width: 8px;
+            height: 8px;
+            background: #00daf3;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10000;
+            will-change: transform;
+        }
+
+        #cursor-follower {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(0, 218, 243, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            will-change: transform;
+        }
+
+        .cursor-hover #custom-cursor { transform: scale(2.5) !important; opacity: 0.2; }
+        .cursor-hover #cursor-follower { transform: scale(1.4) !important; background: rgba(0, 218, 243, 0.05); border-color: #00daf3; }
+
+        /* Scroll Progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, #00daf3, #ff3b3b);
+            z-index: 10001;
+            transition: width 0.1s ease;
+        }
+
+        /* Dynamic Light Glow */
+        #mouse-glow {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle 400px at var(--mouse-x) var(--mouse-y), rgba(0, 218, 243, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .magnetic-btn {
+            display: inline-block;
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @media (max-width: 768px) {
+            #custom-cursor, #cursor-follower, #mouse-glow { display: none !important; }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes apple-load-text {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-apple-load-text {
+            opacity: 0;
+            animation: apple-load-text 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-hover-effect:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 218, 243, 0.3);
+        }
+
+        .btn-hover-effect:active {
+            transform: scale(0.98);
         }
 
         .glass-effect {
@@ -108,6 +220,10 @@
 </head>
 
 <body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+    <div id="scroll-progress"></div>
+    <div id="mouse-glow"></div>
     <!-- TopNavBar Navigation Shell -->
     <nav
         class="fixed top-0 w-full z-50 bg-[#061423]/70 backdrop-blur-xl shadow-[0px_20px_40px_rgba(214,228,249,0.06)] no-line-rule">
@@ -138,12 +254,12 @@
         <!-- Section 1: Professional Bio (Asymmetric Manifesto) -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-32">
             <div class="lg:col-span-7">
-                <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1]">
+                <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-[1.1] animate-apple-load-text">
                     Architecting <span
-                        class="text-transparent bg-clip-text bg-gradient-to-br from-primary to-on-primary-container">Neural
+                        class="text-transparent bg-clip-text neural-gradient">Neural
                         Intelligence</span>
                 </h1>
-                <div class="space-y-6 text-on-surface-variant text-lg leading-relaxed max-w-2xl">
+                <div class="space-y-6 text-on-surface-variant text-lg leading-relaxed max-w-2xl animate-apple-load-text" style="animation-delay: 0.2s;">
                     <p>
                         I am a technologist driven by the convergence of human logic and machine learning. My focus lies
                         in developing high-fidelity neural architectures that don't just process data, but interpret
@@ -156,7 +272,7 @@
                     </p>
                 </div>
             </div>
-            <div class="lg:col-span-5 relative">
+            <div class="lg:col-span-5 relative animate-apple-load-text" style="animation-delay: 0.4s;">
                 <div
                     class="aspect-square rounded-xl overflow-hidden bg-surface-container-low shadow-[0px_20px_40px_rgba(214,228,249,0.06)] relative group">
                     <img alt="AI visualization"
@@ -174,7 +290,7 @@
             </div>
         </section>
         <!-- Section 2: Education Timeline (Neural Layering) -->
-        <section class="mb-32">
+        <section class="mb-32 reveal-on-scroll">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div>
                     <h2 class="font-headline text-4xl font-bold tracking-tight mb-4">Academic Progression</h2>
@@ -245,7 +361,7 @@
             </div>
         </section>
         <!-- Section 3: Core Skills (Bento Grid / Neural Slate) -->
-        <section>
+        <section class="reveal-on-scroll">
             <h2 class="font-headline text-4xl font-bold tracking-tight mb-12">Neural Stack &amp; Competencies</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 <!-- Skill Group 1: AI/ML -->
@@ -357,6 +473,83 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Progress
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const vh = window.innerHeight;
+                const scrollPercent = (scrollY / (document.documentElement.scrollHeight - vh)) * 100;
+                document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+            });
+
+            // Advanced Interactivity (Mouse Move)
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            let followerX = 0, followerY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                document.body.style.setProperty('--mouse-x', mouseX + 'px');
+                document.body.style.setProperty('--mouse-y', mouseY + 'px');
+            });
+
+            // Magnetic Buttons & Hover States
+            const magneticBtns = document.querySelectorAll('.magnetic-btn');
+            const interactables = document.querySelectorAll('a, button');
+
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.25;
+                cursorY += (mouseY - cursorY) * 0.25;
+                followerX += (mouseX - followerX) * 0.15;
+                followerY += (mouseY - followerY) * 0.15;
+
+                document.getElementById('custom-cursor').style.transform = `translate3d(${cursorX - 4}px, ${cursorY - 4}px, 0)`;
+                document.getElementById('cursor-follower').style.transform = `translate3d(${followerX - 16}px, ${followerY - 16}px, 0)`;
+
+                magneticBtns.forEach(btn => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = mouseX - (rect.left + rect.width / 2);
+                    const y = mouseY - (rect.top + rect.height / 2);
+                    const distance = Math.sqrt(x*x + y*y);
+
+                    if (distance < 80) {
+                        btn.style.transform = `translate3d(${x * 0.25}px, ${y * 0.25}px, 0) scale(1.05)`;
+                    } else {
+                        btn.style.transform = `translate3d(0, 0, 0) scale(1)`;
+                    }
+                });
+
+                requestAnimationFrame(animateCursor);
+            }
+            
+            if (window.innerWidth > 768) animateCursor();
+
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
 </body>
 
 </html>

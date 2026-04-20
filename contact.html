@@ -75,7 +75,7 @@
                     "fontFamily": {
                         "headline": ["Space Grotesk"],
                         "body": ["Inter"],
-                        "label": ["Manrope"]
+                        "label": ["Inter"]
                     }
                 },
             },
@@ -91,14 +91,134 @@
             color: #d6e4f9;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .neural-gradient {
+            background: linear-gradient(135deg, #00daf3 0%, #ff3b3b 50%, #00daf3 100%);
+            background-size: 200% auto;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes apple-load-text {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-apple-load-text {
+            opacity: 0;
+            animation: apple-load-text 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-hover-effect:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 218, 243, 0.3);
+        }
+
+        .btn-hover-effect:active {
+            transform: scale(0.98);
+        }
+
         .glass-panel {
             background: rgba(15, 28, 44, 0.7);
             backdrop-filter: blur(20px);
         }
+
+        /* Custom Cursor - Performance Optimized */
+        #custom-cursor {
+            width: 8px;
+            height: 8px;
+            background: #00daf3;
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10000;
+            will-change: transform;
+        }
+
+        #cursor-follower {
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(0, 218, 243, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            will-change: transform;
+        }
+
+        .cursor-hover #custom-cursor { transform: scale(2.5) !important; opacity: 0.2; }
+        .cursor-hover #cursor-follower { transform: scale(1.4) !important; background: rgba(0, 218, 243, 0.05); border-color: #00daf3; }
+
+        /* Scroll Progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, #00daf3, #ff3b3b);
+            z-index: 10001;
+            transition: width 0.1s ease;
+        }
+
+        /* Dynamic Light Glow */
+        #mouse-glow {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle 400px at var(--mouse-x) var(--mouse-y), rgba(0, 218, 243, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .magnetic-btn {
+            display: inline-block;
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @media (max-width: 768px) {
+            #custom-cursor, #cursor-follower, #mouse-glow { display: none !important; }
+        }
     </style>
 </head>
 
-<body class="font-body selection:bg-primary/30">
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+    <div id="scroll-progress"></div>
+    <div id="mouse-glow"></div>
     <!-- TopNavBar -->
     <nav
         class="fixed top-0 w-full z-50 bg-[#061423]/70 backdrop-blur-xl no-line-rule shadow-[0px_20px_40px_rgba(214,228,249,0.06)]">
@@ -122,11 +242,11 @@
     </nav>
     <main class="pt-32 pb-24 px-6 max-w-7xl mx-auto">
         <!-- Hero Title Section -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20 items-end">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20 items-end animate-apple-load-text">
             <div class="md:col-span-8">
                 <h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6">
                     Let's Build the <span
-                        class="text-primary bg-clip-text text-transparent bg-gradient-to-br from-[#00daf3] to-[#0090a1]">Next
+                        class="text-primary bg-clip-text text-transparent neural-gradient">Next
                         Iteration.</span>
                 </h1>
                 <p class="font-body text-xl text-on-surface-variant max-w-xl">
@@ -147,7 +267,7 @@
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 reveal-on-scroll">
             <!-- Contact Form Section -->
             <div class="lg:col-span-7">
                 <div class="bg-surface-container-low rounded-xl p-8 md:p-12 relative overflow-hidden group">
@@ -235,6 +355,83 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Progress
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const vh = window.innerHeight;
+                const scrollPercent = (scrollY / (document.documentElement.scrollHeight - vh)) * 100;
+                document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+            });
+
+            // Advanced Interactivity (Mouse Move)
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            let followerX = 0, followerY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                document.body.style.setProperty('--mouse-x', mouseX + 'px');
+                document.body.style.setProperty('--mouse-y', mouseY + 'px');
+            });
+
+            // Magnetic Buttons & Hover States
+            const magneticBtns = document.querySelectorAll('.magnetic-btn');
+            const interactables = document.querySelectorAll('a, button');
+
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.25;
+                cursorY += (mouseY - cursorY) * 0.25;
+                followerX += (mouseX - followerX) * 0.15;
+                followerY += (mouseY - followerY) * 0.15;
+
+                document.getElementById('custom-cursor').style.transform = `translate3d(${cursorX - 4}px, ${cursorY - 4}px, 0)`;
+                document.getElementById('cursor-follower').style.transform = `translate3d(${followerX - 16}px, ${followerY - 16}px, 0)`;
+
+                magneticBtns.forEach(btn => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = mouseX - (rect.left + rect.width / 2);
+                    const y = mouseY - (rect.top + rect.height / 2);
+                    const distance = Math.sqrt(x*x + y*y);
+
+                    if (distance < 80) {
+                        btn.style.transform = `translate3d(${x * 0.25}px, ${y * 0.25}px, 0) scale(1.05)`;
+                    } else {
+                        btn.style.transform = `translate3d(0, 0, 0) scale(1)`;
+                    }
+                });
+
+                requestAnimationFrame(animateCursor);
+            }
+            
+            if (window.innerWidth > 768) animateCursor();
+
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
 </body>
 
 </html>
