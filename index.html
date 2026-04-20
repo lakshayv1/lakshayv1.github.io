@@ -456,6 +456,11 @@
                 history.scrollRestoration = 'manual';
             }
             window.scrollTo(0, 0);
+
+            // Clean URL hash on load to prevent auto-jump
+            if (window.location.hash === '#main-section') {
+                history.replaceState(null, null, window.location.pathname);
+            }
             
             // Set initial nav state
             if (nav) {
